@@ -18,7 +18,8 @@ const {
   RESET,
   PERSONAL_STATISTIC_DETAIL,
   CONFIRM,
-  CANCEL
+  CANCEL,
+  START
 } = require('../../allCommands')
 
 module.exports = COMMANDS_GENERAL = [
@@ -36,5 +37,6 @@ module.exports = COMMANDS_GENERAL = [
   RESET,
   PERSONAL_STATISTIC_DETAIL,
   CONFIRM,
-  CANCEL
+  CANCEL,
+  START
 ]

@@ -7,7 +7,7 @@
  */
 const isCommand = ({msg}) => {
   if(
-    msg.text.match(/[А-я]/) 
+    msg.text.match(/[А-я]||[A-z]/) 
     && !msg.text.match(/-/) 
     && !msg.text.match(/:/)
     ){

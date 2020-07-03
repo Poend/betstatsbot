@@ -3,6 +3,7 @@ const HOME = '🏠 В главное меню'
 const BACK = '👈 Назад'
 const CONFIRM = 'Подтвердить'
 const CANCEL = 'Отменить'
+const START = '/start'
 // MAIN MENU
 const MAKE_BET = 'Сделать ставку'
   // MAKGE_BET MENU
@@ -46,5 +47,6 @@ module.exports = {
   SEND_AD_POST,
   ADMIN,
   CONFIRM,
-  CANCEL
+  CANCEL,
+  START
 }

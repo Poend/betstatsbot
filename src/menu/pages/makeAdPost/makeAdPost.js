@@ -27,6 +27,8 @@ const PAGE_MAKE_AD_POST = ({
     bottom_left: HOME,
     bottom_right: BACK
   }
+   // сделаем константу страницы (для изменения стейта и возврата из функции)
+   const page = 'PAGE_MAKE_AD_POST'
   // пишем ответное сообщение от бота
   bot.sendMessage(
     msg.chat.id,
@@ -35,8 +37,10 @@ const PAGE_MAKE_AD_POST = ({
       layout: LAYOUT_STAIRS_SMALL,
       positionsAndButtons: keyboard
     }))
+    // меняем состояние, шо ща будем писать рекламный пост
+    state.ad.status = true
     // меняем стейт страницы
-    state.currentPage = 'PAGE_MAKE_AD_POST'
+    state.currentPage = page
   }
 
 

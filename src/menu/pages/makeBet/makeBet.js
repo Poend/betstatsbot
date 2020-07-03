@@ -26,10 +26,8 @@ const PAGE_MAKE_BET = ({
     bottom_left: HOME,
     bottom_right: BACK
   }
-  console.log(generateKeyboard({
-    layout: LAYOUT_LIST,
-    positionsAndButtons: keyboard
-}))
+  // сделаем константу страницы (для изменения стейта и возврата из функции)
+  const page = 'PAGE_MAKE_BET'
   // пишем ответное сообщение от бота
   bot.sendMessage(
     msg.chat.id, 
@@ -39,7 +37,7 @@ const PAGE_MAKE_BET = ({
       positionsAndButtons: keyboard
   }))
   // меняем стейт страницы
-  state.currentPage = 'PAGE_MAKE_BET'
+  state.currentPage = page
 }
 
 module.exports = PAGE_MAKE_BET

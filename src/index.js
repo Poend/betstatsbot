@@ -26,7 +26,10 @@ const initialState = {
     status: false, // делаем ли мы сейчас ставку
     currentEvent: {}, // событие, на которое делаем ставку
   },
-  // ad
+  ad: { // состояние рекламного поста
+    status: false, // делаем ли рекламный пост сейчас
+    adPostText: ''  // текст рекламного поста
+  }
 }
 // определяем состояние приложения, которое потом будем менять
 // и присваиваем дефолтное значение, чтобы все не полегло в случае чего
@@ -35,11 +38,14 @@ const state = initialState
 
 bot.on('message', msg => {
   // Логгирую для разработки в консоль
-  log({text: 'state', value: state})
-  log({text: 'message time', value: Date(msg.date)})
+  // log({text: 'state', value: state})
+  // log({text: 'message time', value: Date(msg.date)})
   log({text: 'chat_id', value: msg.chat.id})
   
   changePages({msg, state, bot})
+  
+  log({text: 'state', value: state})
+
   
 })
 
