@@ -1,3 +1,7 @@
+// класс глобального стейта
+const GlobalState = require('../../../app/globalState')
+// функция получения чат айди
+const getChatId = require('../../../controllers/getChatId')
 // импортим кнопки для отображения
 const {
   LIVE,
@@ -26,8 +30,6 @@ const PAGE_MAKE_BET = ({
     bottom_left: HOME,
     bottom_right: BACK
   }
-  // сделаем константу страницы (для изменения стейта и возврата из функции)
-  const page = 'PAGE_MAKE_BET'
   // пишем ответное сообщение от бота
   bot.sendMessage(
     msg.chat.id, 
@@ -37,7 +39,12 @@ const PAGE_MAKE_BET = ({
       positionsAndButtons: keyboard
   }))
   // меняем стейт страницы
-  state.currentPage = page
+  GlobalState.setState({
+    chat_id: getChatId({msg}),
+    globalState,
+    param: 'currentPage',
+    value: 'PAGE_MAKE_BET'
+  }).root()
 }
 
 module.exports = PAGE_MAKE_BET

@@ -1,3 +1,7 @@
+// класс глобального стейта
+const GlobalState = require('../../../app/globalState')
+// функция получения чат айди
+const getChatId = require('../../../controllers/getChatId')
 // импортим кнопки для отображения
 const {
   SEND_AD_POST,
@@ -15,7 +19,7 @@ const message = require('./message')
 
 const PAGE_MAKE_AD_POST = ({
   // состояние приложения
-  state,
+  globalState,
   // объект сообщения полученное из чата
   msg,
   // сам ботинок
@@ -27,21 +31,31 @@ const PAGE_MAKE_AD_POST = ({
     bottom_left: HOME,
     bottom_right: BACK
   }
-   // сделаем константу страницы (для изменения стейта и возврата из функции)
-   const page = 'PAGE_MAKE_AD_POST'
   // пишем ответное сообщение от бота
   bot.sendMessage(
-    msg.chat.id,
+    getChatId({msg}),
     message,
     generateKeyboard({
       layout: LAYOUT_STAIRS_SMALL,
       positionsAndButtons: keyboard
     }))
-    // меняем состояние, шо ща будем писать рекламный пост
-    state.ad.status = true
-    // меняем стейт страницы
-    state.currentPage = page
-  }
+    
+  // меняем состояние, шо ща будем писать рекламный пост
+  GlobalState.setState({
+    chat_id: getChatId({msg}),
+    globalState,
+    param: 'status',
+    value: true,
+  }).ad()
+
+  // меняем стейт страницы
+  GlobalState.setState({
+    chat_id: getChatId({msg}),
+    globalState,
+    param: 'currentPage',
+    value: 'PAGE_MAKE_AD_POST'
+  }).root()
+}
 
 
 module.exports = PAGE_MAKE_AD_POST

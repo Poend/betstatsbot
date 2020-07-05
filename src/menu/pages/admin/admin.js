@@ -1,3 +1,7 @@
+// импорт класса глобального состояния
+const GlobalState = require('../../../app/globalState')
+// функция получения chat_id
+const getChatId = require('../../../controllers/getChatId')
 // импортим кнопки для отображения
 const {
   MAKE_AD_POST,
@@ -15,7 +19,7 @@ const message = require('./message')
 
 const PAGE_ADMIN = ({
   // состояние приложения
-  state,
+  globalState,
   // объект сообщения полученное из чата
   msg,
   // сам ботинок
@@ -29,15 +33,20 @@ const PAGE_ADMIN = ({
   }
   // пишем ответное сообщение от бота
   bot.sendMessage(
-    msg.chat.id,
+    getChatId({msg}),
     message,
     generateKeyboard({
       layout: LAYOUT_STAIRS_SMALL,
       positionsAndButtons: keyboard
     }))
-    // меняем стейт страницы
-    state.currentPage = 'PAGE_ADMIN'
-  }
+  // меняем стейт страницы
+  GlobalState.setState({
+    chat_id: getChatId({msg}),
+    globalState,
+    param: 'currentPage',
+    value: 'PAGE_ADMIN'
+  }).root()
+}
 
 
 module.exports = PAGE_ADMIN

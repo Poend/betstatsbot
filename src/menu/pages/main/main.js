@@ -1,3 +1,7 @@
+// импортнем класс глобального состояния
+const GlobalState = require('../../../app/globalState')
+// импортим функцию получения чат айди
+const getChatId = require('../../../controllers/getChatId')
 // импортим кнопки для отображения
 const {
   MAKE_BET,
@@ -20,7 +24,7 @@ const message = require('./message')
 
 const PAGE_MAIN = ({
   // состояние приложения
-  state,
+  globalState,
   // объект сообщения полученное из чата
   msg,
   // сам ботинок
@@ -43,7 +47,7 @@ const PAGE_MAIN = ({
         }
         // пишем ответное сообщение от бота
         bot.sendMessage(
-          msg.chat.id,
+          getChatId({msg}),
           message,
           generateKeyboard({
             layout: LAYOUT_CUBE,
@@ -60,7 +64,7 @@ const PAGE_MAIN = ({
         }
         // пишем ответное сообщение от бота
         bot.sendMessage(
-          msg.chat.id,
+          getChatId({msg}),
           message,
           generateKeyboard({
             layout: LAYOUT_STAIRS_SMALL,
@@ -73,7 +77,10 @@ const PAGE_MAIN = ({
     }
   }
   // меняем стейт страницы
-  state.currentPage = 'PAGE_MAIN'
+  GlobalState.reset({
+    chat_id: getChatId({msg}),
+    globalState
+  })
 }
 
 module.exports = PAGE_MAIN
