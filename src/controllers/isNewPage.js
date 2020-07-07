@@ -4,7 +4,7 @@ const {
   BACK,
   MAKE_BET,
   LIVE,
-  PREMATCH,
+  LINE,
   LEADERBOARD,
   TOP_100,
   PERSONAL,
@@ -18,7 +18,10 @@ const {
   ADMIN,
   CONFIRM,
   CANCEL,
-  START
+  START,
+  NEXTFOURHOURS,
+  NEXTDAY,
+  NEXTWEEK,
 } = require('../core/allCommands')
 // тут делаем проверку на то, является ли команда сменой страницы на другую страницу
 // или же это какая-то иная команда (смена приватности профиля, создание рекламного поста и т.п)
@@ -28,13 +31,16 @@ const isNewPage = ({msg}) => {
   if(
     commandText === MAKE_BET ||
     commandText === LIVE ||
-    commandText === PREMATCH ||
+    commandText === LINE ||
     commandText === LEADERBOARD ||
     commandText === PERSONAL ||
     commandText === ADMIN ||
     commandText === MAKE_AD_POST ||
     commandText === HOME ||
     commandText === BACK ||
+    commandText === NEXTFOURHOURS ||
+    commandText === NEXTDAY ||
+    commandText === NEXTWEEK ||
     commandText === START
   ) {
     return true

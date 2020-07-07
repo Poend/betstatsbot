@@ -1,3 +1,4 @@
+const cloneDeep = require('lodash.clonedeep')
 // импорт initialState (первоначального состояния приложения)
 const initialState = require('./initialState')
 /**
@@ -26,7 +27,6 @@ class GlobalState {
     // значение параметра
     value,
     // параметр для изменения
-    // может быть как в формате 'currentPage', так и в формате 'ad.messageID'
     param
     }) => {
       return {
@@ -55,7 +55,9 @@ class GlobalState {
 
   // резетим глобальное состояние до первоначального
   reset = ({chat_id, globalState}) => {
-    globalState[chat_id] = initialState
+    console.log('root?')
+    globalState[chat_id] = cloneDeep(initialState)
+
   } 
 }
 

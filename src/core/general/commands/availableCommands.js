@@ -8,7 +8,7 @@ const {
   BACK,
   MAKE_BET,
   LIVE,
-  PREMATCH,
+  LINE,
   LEADERBOARD,
   TOP_100,
   PERSONAL,
@@ -19,7 +19,10 @@ const {
   PERSONAL_STATISTIC_DETAIL,
   CONFIRM,
   CANCEL,
-  START
+  START,
+  NEXTFOURHOURS,
+  NEXTDAY,
+  NEXTWEEK,
 } = require('../../allCommands')
 
 module.exports = COMMANDS_GENERAL = [
@@ -27,7 +30,7 @@ module.exports = COMMANDS_GENERAL = [
   BACK,
   MAKE_BET,
   LIVE,
-  PREMATCH,
+  LINE,
   LEADERBOARD,
   TOP_100,
   PERSONAL,
@@ -38,5 +41,8 @@ module.exports = COMMANDS_GENERAL = [
   PERSONAL_STATISTIC_DETAIL,
   CONFIRM,
   CANCEL,
-  START
+  START,
+  NEXTFOURHOURS,
+  NEXTDAY,
+  NEXTWEEK,
 ]

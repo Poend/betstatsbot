@@ -4,8 +4,9 @@ const GlobalState = require('../../../app/globalState')
 const getChatId = require('../../../controllers/getChatId')
 // импортим кнопки для отображения
 const {
-  LIVE,
-  LINE,
+  NEXTFOURHOURS,
+  NEXTDAY,
+  NEXTWEEK,
   BACK,
   HOME
 } = require('../../../core/allCommands')
@@ -16,7 +17,7 @@ const generateKeyboard = require('../../../controllers/generateKeyboard')
 // импортим сообщение для вывода в чат при переходе на страницу
 const message = require('./message')
 
-const PAGE_MAKE_BET = ({
+const PAGE_LINE_GAMES = ({
   // состояние приложения
   globalState,
   // объект сообщения полученное из чата
@@ -26,7 +27,7 @@ const PAGE_MAKE_BET = ({
 }) => {
   // определяем клавиатуру
   const keyboard = {
-    list_items: [[LIVE], [LINE]],
+    list_items: [[NEXTFOURHOURS], [NEXTDAY], [NEXTWEEK]],
     bottom_left: HOME,
     bottom_right: BACK
   }
@@ -43,8 +44,8 @@ const PAGE_MAKE_BET = ({
     chat_id: getChatId({msg}),
     globalState,
     param: 'currentPage',
-    value: 'PAGE_MAKE_BET'
+    value: 'PAGE_LINE_GAMES'
   }).root()
 }
 
-module.exports = PAGE_MAKE_BET
+module.exports = PAGE_LINE_GAMES

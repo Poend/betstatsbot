@@ -8,8 +8,12 @@ const START = '/start'
 const MAKE_BET = 'Сделать ставку'
   // MAKGE_BET MENU
   const LIVE = 'Лайв'
-  const PREMATCH = 'Линия'
-  // PREMATCH MENU
+    // СПИСОК ЛАЙВ-ИГР
+  const LINE = 'Линия'
+  // LINE GAMES MENU
+  const NEXTFOURHOURS = 'В ближайшие 4 часа'
+  const NEXTDAY = 'В ближаший день'
+  const NEXTWEEK = 'В ближайшую неделю'
   /*..........ДОПОЛНИМ...........*/
 const LEADERBOARD = 'Таблица лидеров'
   // LEADERBOARD MENU
@@ -34,7 +38,7 @@ module.exports = {
   BACK,
   MAKE_BET,
   LIVE,
-  PREMATCH,
+  LINE,
   LEADERBOARD,
   TOP_100,
   PERSONAL,
@@ -48,5 +52,8 @@ module.exports = {
   ADMIN,
   CONFIRM,
   CANCEL,
-  START
+  START,
+  NEXTFOURHOURS,
+  NEXTDAY,
+  NEXTWEEK,
 }
